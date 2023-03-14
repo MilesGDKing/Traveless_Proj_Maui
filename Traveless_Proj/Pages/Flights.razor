@@ -1,0 +1,95 @@
+﻿@page "/Flights"
+<center><h5>Flight Finder</h5></center>
+
+<style>
+    .titles{
+        display:flex;
+        justify-content:space-between;
+        margin-inline:8%;
+    }
+    li{
+        width:26%;
+    }
+    .container{
+        display:flex;
+        justify-content: space-between;
+    }
+    .flex{
+        height:30px;
+        width: 24%;
+    }
+    .titles{
+        list-style:none;
+    }
+    textarea{
+        font-display: 'arial';
+        height:30px;
+        width:98%;
+        overflow:clip;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    button{
+        border:none;
+        background-color:navy;
+        border-radius:5px;
+        color:white;
+        height:30px;
+        width:20%;
+    }
+    .res{
+        width:97%;
+        margin-inline:auto;
+    }
+    .Reserve{
+        margin-top:30px;
+    }
+    #resCode{
+        margin-top:10px;
+        margin-left:40%;
+    }
+
+</style>
+<div>
+    <ul class="titles">
+        <li>From:</li>
+        <li>To:</li>
+        <li>Day:</li>
+        <li> </li>
+    </ul>
+</div>
+<form class="container">
+    <input  class="flex" placeholder="Any">
+    <input  class="flex" placeholder="Any">
+    <input  class="flex" placeholder="Any">
+    <button type="submit" id="findFlightbutton" class="flex" color="blue">Find Flight</button>
+</form>
+<!-- findFlightbutton is above-->
+<center><h3>Flights</h3></center>
+<div class="container">
+    <textArea placeholder="Loading..."></textArea>
+</div>
+<center><h3>Reserve</h3></center>
+<div class="res">
+    <h5>Flight code</h5>
+    <textArea placeholder="Flight"></textArea>
+    <h5>Airline</h5>
+    <textArea placeholder="Airline"></textArea>
+    <h5>Day</h5>
+    <textArea placeholder="Day"></textArea>
+    <h5>Time</h5>
+    <textArea placeholder="Time"></textArea>
+    <h5>Cost</h5>
+    <textArea placeholder="Cost"></textArea>
+    <h5>Name</h5>
+    <textArea placeholder="Name"></textArea>
+    <h5>Citizenship</h5>
+    <textArea placeholder="Citizenship"></textArea>
+    <center><button id="reserveButton" class="Reserve">Reserve</button></center>
+    <p id="resCode">Here</p>
+    <!--reserveButton Above-->
+</div>
+@code {
+
+}
