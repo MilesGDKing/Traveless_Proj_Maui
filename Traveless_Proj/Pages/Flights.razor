@@ -1,6 +1,5 @@
 ﻿@page "/Flights"
-<center><h5>Flight Finder</h5></center>
-
+<center><h3>Flight Finder</h3></center>
 <style>
     .titles{
         display:flex;
@@ -22,7 +21,6 @@
         list-style:none;
     }
     textarea{
-        font-display: 'arial';
         height:30px;
         width:98%;
         overflow:clip;
@@ -37,6 +35,12 @@
         color:white;
         height:30px;
         width:20%;
+    }
+    button:hover{
+        background-color:#002299
+    }
+    button:active{
+        box-shadow:aqua 20px;
     }
     .res{
         width:97%;
@@ -59,12 +63,12 @@
         <li> </li>
     </ul>
 </div>
-<form class="container">
-    <input  class="flex" placeholder="Any">
+<div class="container">
+    <input  class="flex" placeholder="Any" @bind =  >
     <input  class="flex" placeholder="Any">
     <input  class="flex" placeholder="Any">
     <button type="submit" id="findFlightbutton" class="flex" color="blue">Find Flight</button>
-</form>
+</div>
 <!-- findFlightbutton is above-->
 <center><h3>Flights</h3></center>
 <div class="container">
@@ -73,7 +77,7 @@
 <center><h3>Reserve</h3></center>
 <div class="res">
     <h5>Flight code</h5>
-    <textArea placeholder="Flight"></textArea>
+    <textArea> placeholder="Flight"</textArea>
     <h5>Airline</h5>
     <textArea placeholder="Airline"></textArea>
     <h5>Day</h5>
@@ -87,9 +91,11 @@
     <h5>Citizenship</h5>
     <textArea placeholder="Citizenship"></textArea>
     <center><button id="reserveButton" class="Reserve">Reserve</button></center>
-    <p id="resCode">Here</p>
+
     <!--reserveButton Above-->
 </div>
 @code {
+    public static object OriginAirport { get; private set; }
+    public static object DestinationAirport { get; private set; }
 
 }

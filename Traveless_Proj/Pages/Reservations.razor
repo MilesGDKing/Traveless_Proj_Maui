@@ -21,7 +21,6 @@
         list-style:none;
     }
     textarea{
-        font-display: 'arial';
         height:30px;
         width:98%;
         overflow:clip;
@@ -36,6 +35,12 @@
         color:white;
         height:30px;
         width:20%;
+    }
+    button:hover{
+        background-color:#002299
+    }
+    button:active{
+        box-shadow:aqua 2px
     }
     .res{
         width:97%;
@@ -58,12 +63,12 @@
         <li> </li>
     </ul>
 </div>
-<form class="container">
+<div class="container">
     <input  class="flex" placeholder="Any">
     <input  class="flex" placeholder="Any">
     <input  class="flex" placeholder="Any">
     <button type="submit" id="findFlightbutton" class="flex" color="blue">Find Flight</button>
-</form>
+</div>
 <!-- findFlightbutton is above-->
 <center><h3>Reservations</h3></center>
 <div class="container">
@@ -86,7 +91,7 @@
     <h5>Active</h5>
     <textArea placeholder="Active"></textArea><center>
     <button id="reserveButton" class="Reserve">Reserve</button></center>
-    <p id="resCode">Here</p>
+
     <!--reserveButton Above-->
 </div>
 @code {
