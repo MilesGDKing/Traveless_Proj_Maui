@@ -26,7 +26,7 @@ namespace Traveless_Proj.Data
 
         public static Flights FindFlight(string Flightcode, string Airline, string DayOfWeek, string Time, string Cost)
         {
-            var filePath = "C:\\Users\\mdolp\\OneDrive\\Desktop\\Traveless_Proj\\Traveless_Proj\\Resources\\Files\\flights.csv";
+            var filePath = "C:\\Users\\hesed\\OneDrive\\Desktop\\Traveless_Proj\\Traveless_Proj\\Resources\\Files\\flights.csv";
             var flights = File.ReadAllLines(filePath)
                 .Select(line =>
                 {
