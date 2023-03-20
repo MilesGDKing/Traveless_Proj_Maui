@@ -28,6 +28,14 @@
         -moz-box-shadow: none;
         box-shadow: none;
     }
+    input{
+        height: 30px;
+        width: 98%;
+        overflow: clip;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
     button{
         border:none;
         background-color:navy;
@@ -77,23 +85,45 @@
 <center><h3>Reserve</h3></center>
 <div class="res">
     <h5>Reservation code</h5>
-    <textArea placeholder="Reservation code"></textArea>
+    <input @bind="@ResCode" placeholder="Reservation code"></input>
     <h5>Flight code</h5>
-    <textArea placeholder="Flight code"></textArea>
+    <input @bind="@FlightCode" placeholder="Flight code"></input>
     <h5>Airline</h5>
-    <textArea placeholder="Airline"></textArea>
+    <input @bind="@Airline" placeholder="Airline"></input>
     <h5>Cost</h5>
-    <textArea placeholder="Cost"></textArea>
+    <input @bind="@Cost" placeholder="Cost"><input/>
     <h5>Name</h5>
-    <textArea placeholder="Name"></textArea>
+    <input placeholder="Name"><input/>
     <h5>Citizenship</h5>
-    <textArea placeholder="Citizenship"></textArea>
+    <input placeholder="Citizenship"><input/>
     <h5>Active</h5>
-    <textArea placeholder="Active"></textArea><center>
+    <input placeholder="Active"><input/><center>
     <button id="reserveButton" class="Reserve">Reserve</button></center>
 
     <!--reserveButton Above-->
 </div>
 @code {
+    private string FlightCode;
+    private string Airline;
+    public string DayOfWeek;
+    private string Time;
+    private string Cost;
+    public string Origin;
+    public string Destination;
+    private string Seats;
+    private string Name;
+    private string Citizenship;
+    public string ResCode;
 
+    private string flightCode { get; set; }
+    private string airline { get; set; }
+    public string dayOfWeek { get; set; }
+    private string time { get; set; }
+    private string cost { get; set; }
+    public string origin { get; set; }
+    public string destination { get; set; }
+    private string seats { get; set; }
+    private string name { get; set; }
+    private string citizenship { get; set; }
+    public string rescode { get; set; }
 }
