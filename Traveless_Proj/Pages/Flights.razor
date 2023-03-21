@@ -1,4 +1,5 @@
-﻿@page "/Flights"
+@page "/Flights"
+@using System.Diagnostics;
 <center><h3>Flight Finder</h3></center>
 <style>
     .titles {
@@ -29,6 +30,19 @@
         height: 30px;
         width: 98%;
         overflow: clip;
+
+    textarea{
+        height:30px;
+        width:98%;
+        overflow:clip;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    input{
+        height:30px;
+        width:98%;
+        overflow:clip;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
@@ -36,9 +50,9 @@
 
     button {
         border: none;
-        background-color: navy;
+        background-color: #001199;
         border-radius: 5px;
-        color: white;
+        color: #ffffff;
         height: 30px;
         width: 20%;
     }
@@ -48,13 +62,22 @@
         }
 
         button:active {
-            background-color: aqua;
-            box-shadow: aqua 2px;
+            background-color: #00ffff;
+            box-shadow: #00ffff 2px;
         }
 
     .res {
         width: 97%;
         margin-inline: auto;
+    button:hover{
+        background-color:#002299
+    }
+    button:active{
+        box-shadow:#00ffff 20px;
+    }
+    .res{
+        width:97%;
+        margin-inline:auto;
     }
 
     .Reserve {
@@ -65,6 +88,7 @@
         margin-top: 10px;
         margin-left: 40%;
     }
+    
 
 </style>
 <div>
@@ -98,6 +122,11 @@
         <option value="Saturday">Saturday</option>
         <option value="Sunday">Sunday</option>
     </select>
+
+    <input @bind= "@FlightCode"class="flex" placeholder="Any">
+    <input @bind="@Destination" class="flex" placeholder="Any">
+    <input @bind="@DayOfWeek" class="flex" placeholder="Any">
+
     <button type="submit" id="findFlightbutton" class="flex" color="blue">Find Flight</button>
 </div>
 <!-- findFlightbutton is above-->
@@ -108,18 +137,19 @@
 <center><h3>Reserve</h3></center>
 <div class="res">
     <h5>Flight code</h5>
-    <textArea placeholder="Flight"></textArea>
+    <input @bind= "@FlightCode" placeholder="Flight"></input>
     <h5>Airline</h5>
-    <textArea placeholder="Airline"></textArea>
+    <input @bind= "@Airline" placeholder="Airline"></input>
     <h5>Day</h5>
-    <textArea placeholder="Day"></textArea>
+    <input @bind= "@DayOfWeek" placeholder="Day"></input>
     <h5>Time</h5>
-    <textArea placeholder="Time"></textArea>
-    <h5>Cost</h5>
-    <textArea placeholder="Cost"></textArea>
+    <input @bind= "@Time" placeholder="Time"> </input>
+    <h5>Cost</h5> 
+    <input @bind= "@Cost" placeholder="Cost"></input>
     <h5>Name</h5>
-    <textArea placeholder="Name"></textArea>
+    <input @bind= "@Name" placeholder="Name"></input>
     <h5>Citizenship</h5>
+
     <textArea placeholder="Citizenship"></textArea>
     <center><button id="reserveButton" class="Reserve">Reserve</button></center>
 
@@ -145,4 +175,35 @@
             }
         }
     }
+    <input @bind="@Citizenship" placeholder="Citizenship"></input>
+    <center><button @bind=" "@ResCode" id="reserveButton" class="Reserve">Reserve</button></center>
+    <!--reserveButton Above-->
+</div>
+
+@code 
+{
+    private string FlightCode;
+    private string Airline;
+    public string DayOfWeek;
+    private string Time;
+    private string Cost;
+    public string Origin;
+    public string Destination;
+    private string Seats;
+    private string Name;
+    private string Citizenship;
+    public string ResCode;
+
+    private string flightCode { get; set; }
+    private string airline { get; set; }
+    public string dayOfWeek { get; set; }
+    private string time { get; set; }
+    private string cost { get; set; }
+    public string origin { get; set; }
+    public string destination { get; set; }
+    private string seats { get; set; }
+    private string name { get; set; }
+    private string citizenship { get; set; }
+    public string rescode { get; set; }
+
 }
