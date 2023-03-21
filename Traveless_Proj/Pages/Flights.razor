@@ -1,57 +1,69 @@
 ﻿@page "/Flights"
 <center><h3>Flight Finder</h3></center>
 <style>
-    .titles{
-        display:flex;
-        justify-content:space-between;
-        margin-inline:8%;
+    .titles {
+        display: flex;
+        justify-content: space-between;
+        margin-inline: 8%;
     }
-    li{
-        width:26%;
+
+    li {
+        width: 26%;
     }
-    .container{
-        display:flex;
+
+    .container {
+        display: flex;
         justify-content: space-between;
     }
-    .flex{
-        height:30px;
+
+    .flex {
+        height: 30px;
         width: 24%;
     }
-    .titles{
-        list-style:none;
+
+    .titles {
+        list-style: none;
     }
-    textarea{
-        height:30px;
-        width:98%;
-        overflow:clip;
+
+    textarea {
+        height: 30px;
+        width: 98%;
+        overflow: clip;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
     }
-    button{
-        border:none;
-        background-color:navy;
-        border-radius:5px;
-        color:white;
-        height:30px;
-        width:20%;
+
+    button {
+        border: none;
+        background-color: navy;
+        border-radius: 5px;
+        color: white;
+        height: 30px;
+        width: 20%;
     }
-    button:hover{
-        background-color:#002299
+
+        button:hover {
+            background-color: #002299;
+        }
+
+        button:active {
+            background-color: aqua;
+            box-shadow: aqua 2px;
+        }
+
+    .res {
+        width: 97%;
+        margin-inline: auto;
     }
-    button:active{
-        box-shadow:aqua 20px;
+
+    .Reserve {
+        margin-top: 30px;
     }
-    .res{
-        width:97%;
-        margin-inline:auto;
-    }
-    .Reserve{
-        margin-top:30px;
-    }
-    #resCode{
-        margin-top:10px;
-        margin-left:40%;
+
+    #resCode {
+        margin-top: 10px;
+        margin-left: 40%;
     }
 
 </style>
@@ -64,9 +76,28 @@
     </ul>
 </div>
 <div class="container">
-    <input  class="flex" placeholder="Any" >
-    <input  class="flex" placeholder="Any">
-    <input  class="flex" placeholder="Any">
+    <select class="flex" name="originAirport" id="originAirport">
+        <option value="Any">Any</option>
+        <option value="JFK">JFK</option>
+        <option value="LAX">LAX</option>
+        <option value="ORD">ORD</option>
+    </select>
+    <select class="flex" name="destinationAirport" id="destinationAirport">
+        <option value="Any">Any</option>
+        <option value="JFK">JFK</option>
+        <option value="LAX">LAX</option>
+        <option value="ORD">ORD</option>
+    </select>
+    <select class="flex" name="day" id="day">
+        <option value="Any">Any</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+    </select>
     <button type="submit" id="findFlightbutton" class="flex" color="blue">Find Flight</button>
 </div>
 <!-- findFlightbutton is above-->
