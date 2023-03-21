@@ -1,33 +1,68 @@
-﻿@page "/Reservations"
+@page "/Reservations"
 <center><h3>Reservation Finder</h3></center>
 <style>
-    .titles{
-        display:flex;
-        justify-content:space-between;
-        margin-inline:8%;
+    .titles {
+        display: flex;
+        justify-content: space-between;
+        margin-inline: 8%;
     }
-    li{
-        width:26%;
+
+    li {
+        width: 26%;
     }
-    .container{
-        display:flex;
+
+    .container {
+        display: flex;
         justify-content: space-between;
     }
-    .flex{
-        height:30px;
+
+    .flex {
+        height: 30px;
         width: 24%;
     }
-    .titles{
-        list-style:none;
+
+    .titles {
+        list-style: none;
     }
+
+
+    textarea {
+        height: 30px;
+        width: 98%;
+        overflow: clip;
+
     textarea{
         height:30px;
         width:98%;
         overflow:clip;
+
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
     }
+
+    button {
+        border: none;
+        background-color: #001199;
+        border-radius: 5px;
+        color: #ffffff;
+        height: 30px;
+        width: 20%;
+    }
+
+        button:hover {
+            background-color: #002299;
+        }
+
+        button:active {
+            background-color: #00ffff;
+            box-shadow: #00ffff 2px;
+        }
+
+    .res {
+        width: 97%;
+        margin-inline: auto;
+
     input{
         height: 30px;
         width: 98%;
@@ -38,9 +73,9 @@
     }
     button{
         border:none;
-        background-color:navy;
+        background-color: #001199;
         border-radius:5px;
-        color:white;
+        color: #ffffff;
         height:30px;
         width:20%;
     }
@@ -48,18 +83,20 @@
         background-color:#002299
     }
     button:active{
-        box-shadow:aqua 2px
+        box-shadow: #00ffff 2px
     }
     .res{
         width:97%;
         margin-inline:auto;
     }
-    .Reserve{
-        margin-top:30px;
+
+    .Reserve {
+        margin-top: 30px;
     }
-    #resCode{
-        margin-top:10px;
-        margin-left:40%;
+
+    #resCode {
+        margin-top: 10px;
+        margin-left: 40%;
     }
 
 </style>
@@ -72,6 +109,29 @@
     </ul>
 </div>
 <div class="container">
+    <select class="flex" name="originAirport" id="originAirport">
+        @foreach (var airport in airports.Keys)
+        {
+            <option value="@airport">@airport</option>
+        }
+    </select>
+    <select class="flex" name="destinationAirport" id="destinationAirport">
+        @foreach (var airport in airports.Keys)
+        {
+            <option value="@airport">@airport</option>
+        }
+    </select>
+    <select class="flex" name="day" id="day">
+        <option value="Any">Any</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+    </select>
+
     <input  class="flex" placeholder="Any">
     <input  class="flex" placeholder="Any">
     <input  class="flex" placeholder="Any">
@@ -97,12 +157,36 @@
     <h5>Citizenship</h5>
     <input placeholder="Citizenship"><input/>
     <h5>Active</h5>
+    <textArea placeholder="Active"></textArea><center>
+        <button id="reserveButton" class="Reserve">Reserve</button>
+    </center>
     <input placeholder="Active"><input/><center>
     <button id="reserveButton" class="Reserve">Reserve</button></center>
 
     <!--reserveButton Above-->
 </div>
 @code {
+    private Dictionary<string, List<string>> airports;
+
+    protected override async Task OnInitializedAsync()
+    {
+        airports = new Dictionary<string, List<string>>();
+        using (var reader = new StreamReader("C:\\Users\\hesed\\OneDrive\\Desktop\\Traveless_Proj\\Traveless_Proj\\Resources\\Files\\flights.csv"))
+        {
+            while (!reader.EndOfStream)
+            {
+                var line = await reader.ReadLineAsync();
+                var values = line.Split(',');
+                if (!airports.ContainsKey(values[0]))
+                {
+                    airports[values[0]] = new List<string>();
+                }
+                airports[values[0]].Add(line);
+            }
+        }
+    }
+}
+
     private string FlightCode;
     private string Airline;
     public string DayOfWeek;
