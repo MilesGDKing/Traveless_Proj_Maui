@@ -77,16 +77,16 @@
 </div>
 <div class="container">
     <select class="flex" name="originAirport" id="originAirport">
-        <option value="Any">Any</option>
-        <option value="JFK">JFK</option>
-        <option value="LAX">LAX</option>
-        <option value="ORD">ORD</option>
+        @foreach (var airport in airports.Keys)
+        {
+            <option value="@airport">@airport</option>
+        }
     </select>
     <select class="flex" name="destinationAirport" id="destinationAirport">
-        <option value="Any">Any</option>
-        <option value="JFK">JFK</option>
-        <option value="LAX">LAX</option>
-        <option value="ORD">ORD</option>
+        @foreach (var airport in airports.Keys)
+        {
+            <option value="@airport">@airport</option>
+        }
     </select>
     <select class="flex" name="day" id="day">
         <option value="Any">Any</option>
@@ -126,7 +126,23 @@
     <!--reserveButton Above-->
 </div>
 @code {
-    public static object OriginAirport { get; private set; }
-    public static object DestinationAirport { get; private set; }
+    private Dictionary<string, List<string>> airports;
 
+    protected override async Task OnInitializedAsync()
+    {
+        airports = new Dictionary<string, List<string>>();
+        using (var reader = new StreamReader("C:\\Users\\hesed\\OneDrive\\Desktop\\Traveless_Proj\\Traveless_Proj\\Resources\\Files\\flights.csv"))
+        {
+            while (!reader.EndOfStream)
+            {
+                var line = await reader.ReadLineAsync();
+                var values = line.Split(',');
+                if (!airports.ContainsKey(values[0]))
+                {
+                    airports[values[0]] = new List<string>();
+                }
+                airports[values[0]].Add(line);
+            }
+        }
+    }
 }
