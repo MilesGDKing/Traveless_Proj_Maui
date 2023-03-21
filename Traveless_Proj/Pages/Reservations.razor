@@ -77,16 +77,16 @@
 </div>
 <div class="container">
     <select class="flex" name="originAirport" id="originAirport">
-        <option value="Any">Any</option>
-        <option value="JFK">JFK</option>
-        <option value="LAX">LAX</option>
-        <option value="ORD">ORD</option>
+        @foreach (var airport in airports.Keys)
+        {
+            <option value="@airport">@airport</option>
+        }
     </select>
     <select class="flex" name="destinationAirport" id="destinationAirport">
-        <option value="Any">Any</option>
-        <option value="JFK">JFK</option>
-        <option value="LAX">LAX</option>
-        <option value="ORD">ORD</option>
+        @foreach (var airport in airports.Keys)
+        {
+            <option value="@airport">@airport</option>
+        }
     </select>
     <select class="flex" name="day" id="day">
         <option value="Any">Any</option>
